@@ -18,16 +18,16 @@ namespace WebApiYerberoCodeFirst.Controllers
         private YerberoContext db = new YerberoContext();
 
         // GET: api/Empleado
-        public IQueryable<Empleado> Getempleados()
+        public IQueryable<Empleado> GetEmpleados()
         {
-            return db.empleados;
+            return db.Empleados;
         }
 
         // GET: api/Empleado/5
         [ResponseType(typeof(Empleado))]
         public async Task<IHttpActionResult> GetEmpleado(int id)
         {
-            Empleado empleado = await db.empleados.FindAsync(id);
+            Empleado empleado = await db.Empleados.FindAsync(id);
             if (empleado == null)
             {
                 return NotFound();
@@ -45,7 +45,7 @@ namespace WebApiYerberoCodeFirst.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != empleado.idEmpleado)
+            if (id != empleado.EmpleadoId)
             {
                 return BadRequest();
             }
@@ -80,23 +80,23 @@ namespace WebApiYerberoCodeFirst.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.empleados.Add(empleado);
+            db.Empleados.Add(empleado);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = empleado.idEmpleado }, empleado);
+            return CreatedAtRoute("DefaultApi", new { id = empleado.EmpleadoId }, empleado);
         }
 
         // DELETE: api/Empleado/5
         [ResponseType(typeof(Empleado))]
         public async Task<IHttpActionResult> DeleteEmpleado(int id)
         {
-            Empleado empleado = await db.empleados.FindAsync(id);
+            Empleado empleado = await db.Empleados.FindAsync(id);
             if (empleado == null)
             {
                 return NotFound();
             }
 
-            db.empleados.Remove(empleado);
+            db.Empleados.Remove(empleado);
             await db.SaveChangesAsync();
 
             return Ok(empleado);
@@ -113,7 +113,7 @@ namespace WebApiYerberoCodeFirst.Controllers
 
         private bool EmpleadoExists(int id)
         {
-            return db.empleados.Count(e => e.idEmpleado == id) > 0;
+            return db.Empleados.Count(e => e.EmpleadoId == id) > 0;
         }
     }
 }

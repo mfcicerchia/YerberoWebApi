@@ -18,16 +18,16 @@ namespace WebApiYerberoCodeFirst.Controllers
         private YerberoContext db = new YerberoContext();
 
         // GET: api/Yerba
-        public IQueryable<Yerba> Getyerbas()
+        public IQueryable<Yerba> GetYerbas()
         {
-            return db.yerbas;
+            return db.Yerbas;
         }
 
         // GET: api/Yerba/5
         [ResponseType(typeof(Yerba))]
         public async Task<IHttpActionResult> GetYerba(int id)
         {
-            Yerba yerba = await db.yerbas.FindAsync(id);
+            Yerba yerba = await db.Yerbas.FindAsync(id);
             if (yerba == null)
             {
                 return NotFound();
@@ -45,7 +45,7 @@ namespace WebApiYerberoCodeFirst.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != yerba.idYerba)
+            if (id != yerba.YerbaId)
             {
                 return BadRequest();
             }
@@ -80,23 +80,23 @@ namespace WebApiYerberoCodeFirst.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.yerbas.Add(yerba);
+            db.Yerbas.Add(yerba);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = yerba.idYerba }, yerba);
+            return CreatedAtRoute("DefaultApi", new { id = yerba.YerbaId }, yerba);
         }
 
         // DELETE: api/Yerba/5
         [ResponseType(typeof(Yerba))]
         public async Task<IHttpActionResult> DeleteYerba(int id)
         {
-            Yerba yerba = await db.yerbas.FindAsync(id);
+            Yerba yerba = await db.Yerbas.FindAsync(id);
             if (yerba == null)
             {
                 return NotFound();
             }
 
-            db.yerbas.Remove(yerba);
+            db.Yerbas.Remove(yerba);
             await db.SaveChangesAsync();
 
             return Ok(yerba);
@@ -113,7 +113,7 @@ namespace WebApiYerberoCodeFirst.Controllers
 
         private bool YerbaExists(int id)
         {
-            return db.yerbas.Count(e => e.idYerba == id) > 0;
+            return db.Yerbas.Count(e => e.YerbaId == id) > 0;
         }
     }
 }
