@@ -9,18 +9,13 @@ namespace WebApiYerberoCodeFirst.Models
 {
     public class Yerba
     {
-
         [Key]
-        public int idYerba { set; get; }
-       public string nombre { set; get; }
-
-        public string marca { set; get; }
-        float peso { set; get; }
-        public DateTime fechaIngreso { set; get; }
-
-        public DateTime fechaApertura { set; get; }
-
-        public DateTime fechaAgotada { set; get; }
-
+        public int YerbaId { set; get; }
+        public string Nombre { set; get; }
+        public string Marca { set; get; }
+        float Peso { set; get; }
+        public DateTime FechaIngreso { set; get; }
+        public DateTime FechaApertura { set; get; }
+        public DateTime FechaAgotada { set; get; }
     }
 }

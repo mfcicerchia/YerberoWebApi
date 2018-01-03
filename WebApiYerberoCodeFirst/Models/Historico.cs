@@ -10,7 +10,7 @@ namespace WebApiYerberoCodeFirst.Models
     public class Historico
     {
         [Key]
-        public int  idLog {set; get;}
-        public String descripcion { set; get; }
+        public int  LogId {set; get;}
+        public String Descripcion { set; get; }
     }
 }

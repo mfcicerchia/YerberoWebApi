@@ -9,8 +9,8 @@ namespace WebApiYerberoCodeFirst.Models
 {
     public class YerberoContext :DbContext
     {
-        public DbSet<Empleado> empleados { set; get; }
-        public DbSet<Yerba> yerbas { get; set; }
+        public DbSet<Empleado> Empleados { set; get; }
+        public DbSet<Yerba> Yerbas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -25,12 +25,8 @@ namespace WebApiYerberoCodeFirst.Models
             modelBuilder.Entity<Yerba>().ToTable("YerbaInfo");
 
             // Establecer primary Key de las tablas
-            modelBuilder.Entity<Empleado>().HasKey(t => t.idEmpleado);
-            modelBuilder.Entity<Yerba>().HasKey(t=> new { t.idYerba,});
-
-            
-
-
+            modelBuilder.Entity<Empleado>().HasKey(t => t.EmpleadoId);
+            modelBuilder.Entity<Yerba>().HasKey(t=> new { t.YerbaId,});
         }
     }
 }

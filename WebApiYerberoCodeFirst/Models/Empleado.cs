@@ -10,10 +10,10 @@ namespace WebApiYerberoCodeFirst.Models
     public class Empleado
     {
         [Key]
-        public int idEmpleado { get; set; }
-        public int dni { get; set; }
-        public string nombre { set; get; }
-        public string apellido { set; get; }
+        public int EmpleadoId { get; set; }
+        public int Dni { get; set; }
+        public string Nombre { set; get; }
+        public string Apellido { set; get; }
 
     }
 }
